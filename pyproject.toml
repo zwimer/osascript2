@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "osascript2"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+]
+license = {text = "GPLv3"}
+description = "A tiny python osascript wrapper"
+urls = {Homepage = "https://github.com/zwimer/osascript2"}
+requires-python = ">= 3.14"
+dynamic = ["version"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
+include-package-data = false
+
+[tool.setuptools.packages]
+find = {namespaces = false}
+
+[tool.setuptools.package-data]
+osascript = ["py.typed"]
+
+[tool.setuptools.dynamic]
+version = {attr = "osascript.__version__"}
+
+# Tools
+
+[tool.black]
+line-length = 120
+target-version = ["py314"]
+
+[tool.ruff]
+line-length = 120
+[tool.ruff.lint]
+ignore=["E731", "I001"]
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length = 120
+disable = "unspecified-encoding,missing-module-docstring,too-few-public-methods,missing-class-docstring,missing-function-docstring"
