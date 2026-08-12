@@ -6,6 +6,7 @@ Install via:
 pip install osascript2
 ```
 
+Usage:
 ```python
 import osascript
 
