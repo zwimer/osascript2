@@ -40,7 +40,31 @@ target-version = ["py314"]
 [tool.ruff]
 line-length = 120
 [tool.ruff.lint]
-ignore=["E731", "I001"]
+ignore=[
+	"D10", "D2", "D403", "D415",
+	"E731",
+	"I001",
+	"S603", "S607",
+]
+extend-select = [
+	"ANN",
+	"ARG",
+	"ASYNC",
+	"C4",
+	"D",
+	"DTZ",
+	"PERF",
+	"PGH",
+	"PIE",
+	"PL",
+	"PTH",
+	"RET",
+	"S",
+	"SIM",
+	"TID"
+]
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401", "F403"]
 
