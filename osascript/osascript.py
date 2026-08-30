@@ -4,14 +4,17 @@ from typing import cast
 import subprocess
 
 __all__ = ("run", "run_bytes")
+OSASCRIPT = Path("/usr/bin/osascript")
 
 
 def _sub_run(path: str | Path, text: bool) -> tuple[int, str, str] | tuple[int, bytes, bytes]:
-    p = subprocess.run(["osascript", path], text=text, capture_output=True, check=False)
+    p = subprocess.run([OSASCRIPT, path], text=text, capture_output=True, check=False)
     return p.returncode, p.stdout, p.stderr
 
 
 def _run(cmd: str | Path, text: bool) -> tuple[int, str, str] | tuple[int, bytes, bytes]:
+    if not OSASCRIPT.exists():
+        raise NotImplementedError(f"osascript is only available on macOS versions with {OSASCRIPT}")
     if isinstance(cmd, Path):
         return _sub_run(cmd, text)
     with NamedTemporaryFile("w", delete_on_close=False) as f:
