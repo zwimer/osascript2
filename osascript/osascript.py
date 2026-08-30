@@ -21,16 +21,24 @@ def _run(cmd: str | Path, text: bool) -> tuple[int, str, str] | tuple[int, bytes
 
 
 def run(cmd: str | Path) -> tuple[int, str, str]:
-    """
-    Execute the given applescript command or file (run with subprocess' text=True)
-    Return the (return code, stdout, and stderr)
+    """Execute the given applescript command or file (run with subprocess' text=True)
+
+    Args:
+        cmd: The string command (or path to the applescript file) to execute
+
+    Returns:
+        A tuple containing: (return code, stdout, and stderr)
     """
     return cast(tuple[int, str, str], _run(cmd, True))
 
 
 def run_bytes(cmd: str | Path) -> tuple[int, bytes, bytes]:
-    """
-    Execute the given applescript command or file (run with subprocess' text=False)
-    Return the (return code, stdout, and stderr)
+    """Execute the given applescript command or file (run with subprocess' text=False)
+
+    Args:
+        cmd: The string command (or path to the applescript file) to execute
+
+    Returns:
+        A tuple containing: (return code, stdout, and stderr)
     """
     return cast(tuple[int, bytes, bytes], _run(cmd, False))
