@@ -14,7 +14,7 @@ def _sub_run(path: str | Path, text: bool) -> tuple[int, str, str] | tuple[int, 
 
 def _run(cmd: str | Path, text: bool) -> tuple[int, str, str] | tuple[int, bytes, bytes]:
     if not OSASCRIPT.exists():
-        raise NotImplementedError(f"osascript is only available on macOS versions with {OSASCRIPT}")
+        raise NotImplementedError(f"osascript is only available on macOS via {OSASCRIPT}")
     if isinstance(cmd, Path):
         return _sub_run(cmd, text)
     with NamedTemporaryFile("w", delete_on_close=False) as f:
